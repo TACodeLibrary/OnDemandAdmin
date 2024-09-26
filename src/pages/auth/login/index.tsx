@@ -5,7 +5,7 @@ import { LoginFormSchema } from '../../../schema';
 import { Link } from 'react-router-dom';
 import { useLoginMutation } from '../../../rtk/endpoints/authApi';
 import { toast } from 'sonner';
-import { aesDecrypt, aesEncrypt } from '../../../utils/aes-encrypt-decrypt';
+import { aesEncrypt } from '../../../utils/aes-encrypt-decrypt';
 
 type LoginSchema = z.infer<typeof LoginFormSchema>;
 
@@ -20,8 +20,6 @@ const Login = () => {
     const [login, { isLoading }] = useLoginMutation();
 
     const onSubmit = async ({ email, password }: LoginSchema) => {
-        console.log(aesEncrypt(email));
-        console.log(aesDecrypt(aesEncrypt(email)))
         try {
             const res = await login({
                 email : aesEncrypt(email),
@@ -32,6 +30,7 @@ const Login = () => {
             if(res?.error){
                 throw res.error
             }
+            
 
             toast.success('Login Success!')
 

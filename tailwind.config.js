@@ -4,13 +4,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'red-hat': ['"Red Hat Display"', 'sans-serif'], // Set Red Hat Display as the global sans-serif font
+        'red-hat': "Red Hat Display, sans-serif", // Set Red Hat Display as the global sans-serif font
       },
-      colors : {
-        primary : '#6BB1FF',
-
-      }
     },
+    colors : {
+      white : 'var(--white)',
+      black : 'var(--black)',
+      gray : {
+        900 : 'var(--gray-900)',
+      }
+    }
   },
   plugins: [],
 }

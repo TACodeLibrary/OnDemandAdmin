@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
+      crypto: 'crypto-browserify',
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.mjs'],
   },

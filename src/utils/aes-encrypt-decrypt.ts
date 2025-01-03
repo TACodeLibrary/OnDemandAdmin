@@ -30,17 +30,31 @@ export const aesDecrypt = (encrypted: string) => {
 };
 
 
+// export const decryptObjectValues = <T extends Record<string, any>>(object: T, keysToDecrypt: string[]): T => {
+//   const decryptedObject: T = { ...object };
+
+//   for (const key of keysToDecrypt) {
+//     if (key in decryptedObject) {
+//       decryptedObject[key] = decryptValue(decryptedObject[key], key);
+//     }
+//   }
+
+//   return decryptedObject;
+// };
+
 export const decryptObjectValues = <T extends Record<string, any>>(object: T, keysToDecrypt: string[]): T => {
   const decryptedObject: T = { ...object };
 
   for (const key of keysToDecrypt) {
     if (key in decryptedObject) {
-      decryptedObject[key] = decryptValue(decryptedObject[key], key);
+      // Use type assertion to allow assignment
+      (decryptedObject as Record<string, any>)[key] = decryptValue(decryptedObject[key], key);
     }
   }
 
   return decryptedObject;
 };
+
 
 const decryptValue = (value: any, key: string | null = null): any => {
   if (typeof value === "string") {

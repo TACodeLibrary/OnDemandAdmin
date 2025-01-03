@@ -1,0 +1,94 @@
+.iplan-form {
+  .input-group {
+    .input-group-prepend {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 1rem;
+      z-index: 6;
+      line-height: 1;
+    }
+
+    input {
+      padding-left: 4rem;
+      border-color: var(--bs-gray-300);
+      border-radius: 1rem !important;
+    }
+  }
+
+  button {
+    margin-top: 2.4rem;
+  }
+}
+
+.onboarding-inner {
+
+  .text-mute {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+}
+
+.onboarding-section {
+  .image-box {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .logo-image {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+
+    p {
+      color: var(--bs-white);
+    }
+  }
+}
+
+.onboarding-inner-box {
+  .title-wrapper {
+    p {
+      font-weight: 500;
+
+      span {
+        color: var(--bs-primary);
+      }
+    }
+  }
+}
+
+.otp-formset {
+  &>div {
+    gap: 2rem;
+    justify-content: center;
+
+    input.form-control {
+      min-width: 6rem;
+      padding: 1.4rem;
+      border: 0 !important;
+      background-color: var(--bs-gray-200);
+      font-size: 2rem;
+      color: var(--bs-gray-900);
+    }
+  }
+
+}
+
+.form-check-reg {
+  padding-left: 2em;
+
+  a {
+    color: $dark;
+    font-weight: 600;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

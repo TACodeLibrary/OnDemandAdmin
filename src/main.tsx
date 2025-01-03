@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'sonner';
+import './assets/global.scss';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

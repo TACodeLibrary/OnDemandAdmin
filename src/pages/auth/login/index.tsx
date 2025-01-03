@@ -22,15 +22,15 @@ const Login = () => {
     const onSubmit = async ({ email, password }: LoginSchema) => {
         try {
             const res = await login({
-                email : aesEncrypt(email),
+                email: aesEncrypt(email),
                 password,
-                device_token : 'deviceToken'
+                device_token: 'deviceToken'
             }).unwrap();
 
-            if(res?.error){
+            if (res?.error) {
                 throw res.error
             }
-            
+
 
             toast.success('Login Success!')
 
@@ -42,7 +42,7 @@ const Login = () => {
 
 
     return (
-        <div className="flex min-h-screen">
+        <div className="d-flex">
             {/* Left Section */}
             <div className="w-3/5 bg-gray-50">
                 <img src="/banner.jpg" alt="Description" className="h-full blur-sm max-w-full h-auto" />
@@ -52,6 +52,7 @@ const Login = () => {
             <div className="w-2/5 flex bg-gray-50">
                 <div className="w-full p-20 space-y-8 bg-white shadow-lg rounded-lg h-full flex flex-col borde justify-center align-center">
                     <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
+                    <i className="icon-location-dot"></i>
                     <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
                         <div className="space-y-4">
                             {/* Email Field */}

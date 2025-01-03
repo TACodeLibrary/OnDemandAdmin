@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginFormSchema } from '../../../schema';
-import { Link } from 'react-router-dom';
 import { useLoginMutation } from '../../../rtk/endpoints/authApi';
 import { toast } from 'sonner';
 import { aesEncrypt } from '../../../utils/aes-encrypt-decrypt';

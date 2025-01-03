@@ -1,7 +1,7 @@
-$font-family-sans-serif: var(--font-roboto);
+$font-family-sans-serif: "Inter", serif;
 $font-size-root: 62.5%;
 $font-size-base: 1.4rem;
-$headings-font-family: var(--font-breeSerif);
+$headings-font-family: "Inter", serif;
 $headings-font-weight: 400;
 $line-height-base: 1.4;
 $headings-line-height: 1.4;
@@ -93,9 +93,9 @@ $oranges: (
   "orange-900": $orange-900
 );
 
-$body-color: $gray-900;
-$primary: $cornell-red;
-$secondary: $gray-200;
+$body-color: $white;
+$primary: $white;
+$secondary: $gray-900;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
@@ -161,7 +161,7 @@ $input-focus-box-shadow: none;
 $input-focus-border-color: var(--bs-gray-500);
 $input-disabled-bg: var(--bs-gray-200);
 
-$form-label-color: var(--bs-gray-600);
+$form-label-color: var(--bs-gray-100);
 $form-label-font-size: 1.4rem;
 $form-label-font-weight: 500;
 $form-select-focus-border-color: var(--bs-gray-500);

@@ -1,0 +1,51 @@
+.e-card {
+  padding: .8rem;
+  border: 1px solid var(--bs-gray-400);
+  border-radius: .8rem;
+
+  .e-label {
+    font-size: 1.4rem;
+    color: var(--bs-gray-600);
+    line-height: 1.4;
+    margin-bottom: .4rem;
+    @extend .d-block, .fw-medium;
+  }
+
+  .e-data {
+    font-size: 1.6rem;
+    color: var(--bs-gray-900);
+    font-weight: 400;
+    margin-bottom: 0;
+    @extend .font-heading;
+  }
+}
+
+// Card design 
+
+.card {
+  margin-bottom: 2.4rem;
+
+  &.bg-primary-light {
+    background-color: var(--bs-linen);
+    @extend .border-0;
+
+    .card-body {
+      color: var(--bs-body-color);
+    }
+  }
+
+  &.bg-light-pink {
+    background-color: var(--bs-pink-light);
+    @extend .border-0;
+  }
+
+  &.bg-light-red {
+    background-color: $light-red;
+    @extend .border-0;
+  }
+
+  &.bg-green-light {
+    background-color: $light-green;
+    @extend .border-0;
+  }
+}

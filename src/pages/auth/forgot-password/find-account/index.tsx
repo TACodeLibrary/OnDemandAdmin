@@ -13,6 +13,7 @@ const FindAccount = () => {
             email: ''
         },
         resolver: zodResolver(FindAccountSchema)
+
     });
 
     const onSubmit = (data: any) => {
@@ -24,6 +25,8 @@ const FindAccount = () => {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-white">
+            
+            
             <div className="max-w-sm w-full space-y-6">
                 <h2 className="text-3xl font-bold text-center text-gray-900">Find Your Account</h2>
 

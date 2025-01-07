@@ -16,8 +16,8 @@ $gray-300 : #e5e7eb;
 $gray-400 : #d2d6db;
 $gray-500 : #9da4ae;
 $gray-600 : #6c737f;
-$gray-700 : #4d5761;
-$gray-800 : #384250;
+$gray-700 : #384250;
+$gray-800 : #1F2A37;
 $gray-900 : #111927;
 
 
@@ -94,8 +94,8 @@ $oranges: (
 );
 
 $body-color: $gray-900;
-$primary: $cornell-red;
-$secondary: $gray-200;
+$primary: $white;
+$secondary: $gray-500;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
@@ -152,11 +152,11 @@ $input-btn-padding-x: 1.2rem;
 $input-btn-font-family: $font-family-sans-serif;
 $input-line-height: 1.5;
 $input-btn-font-size: 1.4rem;
-$input-color: var(--bs-gray-900);
+$input-color: var(--bs-white);
 $input-font-weight: 400;
-$input-placeholder-color: var(--bs-gray-500);
-$input-bg: var(--bs-white);
-$input-border-color: var(--bs-gray-300);
+$input-placeholder-color: var(--bs-gray-100);
+$input-bg: var(--bs-transparent);
+$input-border-color: var(--bs-gray-700);
 $input-border-radius: .8rem;
 $input-box-shadow: none;
 $input-focus-box-shadow: none;
@@ -170,8 +170,8 @@ $form-select-focus-border-color: var(--bs-gray-500);
 $form-select-border-radius: .6rem;
 $form-select-focus-box-shadow: none;
 
-$btn-padding-y: .8rem;
-$btn-padding-x: 1.2rem;
+$btn-padding-y: 1.05rem;
+$btn-padding-x: 1.4rem;
 $btn-font-family: var(--font-breeSerif);
 $btn-font-size: 1.4rem;
 $btn-line-height: 1.5;
@@ -180,9 +180,9 @@ $btn-padding-y-lg: 1rem;
 $btn-padding-x-lg: 1.2rem;
 $btn-font-size-lg: 1.6rem;
 
-$btn-border-radius: 1.2rem;
-$btn-border-radius-sm: 1.2rem;
-$btn-border-radius-lg: 1.2rem;
+$btn-border-radius: 1.1rem;
+$btn-border-radius-sm: 1.1rem;
+$btn-border-radius-lg: 1.1rem;
 
 $dropdown-min-width: 24rem;
 $dropdown-font-size: 1.4rem;

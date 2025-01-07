@@ -13,13 +13,11 @@ const FindAccount = () => {
             email: ''
         },
         resolver: zodResolver(FindAccountSchema)
-
     });
 
     const onSubmit = (data: any) => {
         console.log(data);
         navigate("/forgot-password/verify-account");
-
         // Handle form submission logic here
     };
 

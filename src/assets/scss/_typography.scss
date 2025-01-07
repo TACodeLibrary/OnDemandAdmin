@@ -4,12 +4,14 @@ html,
 body {
   min-height: 100vh;
   font-family: $font-family-sans-serif;
+  background-color: var(--bs-gray-900);
+  color: var(--bs-white);
 }
 
 p {
   &.sub-title {
     font-size: 2rem;
-    color: $black;
+    color: $white;
     line-height: 1.4;
     font-weight: 300;
     margin: 0 0 2rem;
@@ -32,7 +34,7 @@ p {
 .title-large {
   font-size: 2.8rem;
   margin-bottom: 1.4rem;
-  color: var(--bs-gray-900);
+  color: var(--bs-white);
 }
 
 .title-h1 {

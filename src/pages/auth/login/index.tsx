@@ -48,51 +48,50 @@ const Login = () => {
             </div>
 
             {/* Right Section */}
-            <div className="right-section">
+            <div className="right-section text-center">
                 <div className="form-container">
-                    <h2 className="title-h2">Welcome Back</h2>
-                    <p className="title-h5 mb-2">Please enter your credentials to log into your account</p>
+                    <h2 className='title-large'>Welcome Back</h2>
+                    <p className='mb-4 text-secondary'>Please enter your credentials to log into your account</p>
                     <form className="form" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                             {/* Email Field */}
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Email address"
-                                className="mb-3"
+                                className="mb-3 field-transparent"
                             >
-                                <Form.Control 
-                                type="email" 
-                                placeholder="name@example.com"
-                                className={`input ${errors.email ? 'input-error' : ''}`}
-                                {...register('email')}  
+                                <Form.Control
+                                    type="email"
+                                    placeholder="name@example.com"
+                                    className={`input ${errors.email ? 'input-error' : ''}`}
+                                    {...register('email')}
                                 />
                             </FloatingLabel>
 
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Password"
-                                className="mb-3"
+                                className="mb-3 field-transparent"
                             >
                                 <Form.Control type="password" placeholder="Password"
-                                className={`input ${errors.password ? 'input-error' : ''}`}
-                                {...register('password')}
+                                    className={`input ${errors.password ? 'input-error' : ''}`}
+                                    {...register('password')}
                                 />
                             </FloatingLabel>
                             {errors.password && <span className="error-text">{errors.password.message}</span>}
                         </div>
 
                         {/* Forgot Password Link */}
-                        <div className="forgot-password">
+                        <div className="forgot-password text-end mb-3">
                             <Link to="/forgot-password/find-account" className="">Forgot Password?</Link>
                         </div>
 
                         {/* Submit Button */}
-                        <div className="button-container">
-                            
-                            <Button type="submit" disabled={isLoading}>
-                                {isLoading ? 'Loading...' : 'Log In'}
-                            </Button>
-                        </div>
+
+                        <Button type="submit" disabled={isLoading} className='btn-full'>
+                            {isLoading ? 'Loading...' : 'Log In'}
+                        </Button>
+
                     </form>
                 </div>
             </div>

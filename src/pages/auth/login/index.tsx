@@ -2,16 +2,28 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginFormSchema } from '../../../schema';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../../rtk/endpoints/authApi';
 import { toast } from 'sonner';
 import { aesEncrypt } from '../../../utils/aes-encrypt-decrypt';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { Logo } from '../../../utils/images';
+import { FiMail } from "react-icons/fi";
+import { LiaKeySolid } from "react-icons/lia";
+import { useEffect } from 'react';
 
 type LoginSchema = z.infer<typeof LoginFormSchema>;
 
+interface LoginResponse {
+  data: {
+    access_token: string;
+    user: any;
+  };
+  error?: string;
+}
+
 const Login = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm<LoginSchema>({
         defaultValues: {
             email: '',
@@ -21,18 +33,31 @@ const Login = () => {
     });
     const [login, { isLoading }] = useLoginMutation();
 
+    useEffect(() => {
+        // Check if already authenticated
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/dashboard');
+        }
+    }, [navigate]);
+
     const onSubmit = async ({ email, password }: LoginSchema) => {
         try {
             const res = await login({
                 email: aesEncrypt(email),
                 password,
                 device_token: 'deviceToken'
-            }).unwrap();
+            }).unwrap() as unknown as LoginResponse;
 
             if (res?.error) {
                 throw res.error
             }
+
+            localStorage.setItem('token', res.data.access_token);
+            localStorage.setItem('user', JSON.stringify(res.data));
+            
             toast.success('Login Success!')
+            navigate("/dashboard", { replace: true });
 
         } catch (error) {
             toast.error('Login Failed!')
@@ -58,32 +83,36 @@ const Login = () => {
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Email address"
-                                className="mb-3 field-transparent"
+                                className="mb-3 field-transparent input-has-icon"
                             >
+                                <FiMail/>
                                 <Form.Control
                                     type="email"
                                     placeholder="name@example.com"
                                     className={`input ${errors.email ? 'input-error' : ''}`}
                                     {...register('email')}
                                 />
+                                
+                                
                             </FloatingLabel>
 
                             <FloatingLabel
                                 controlId="floatingInput"
                                 label="Password"
-                                className="mb-3 field-transparent"
+                                className="mb-3 field-transparent input-has-icon"
                             >
                                 <Form.Control type="password" placeholder="Password"
                                     className={`input ${errors.password ? 'input-error' : ''}`}
                                     {...register('password')}
                                 />
+                                <LiaKeySolid/>
                             </FloatingLabel>
                             {errors.password && <span className="error-text">{errors.password.message}</span>}
                         </div>
 
                         {/* Forgot Password Link */}
                         <div className="forgot-password text-end mb-3">
-                            <Link to="/forgot-password/find-account" className="">Forgot Password?</Link>
+                            <Link to="/forgot-password/find-account" className="link-text">Forgot Password?</Link>
                         </div>
 
                         {/* Submit Button */}

@@ -4,17 +4,49 @@ import FindAccount from './pages/auth/forgot-password/find-account';
 import VerifyAccount from './pages/auth/forgot-password/verify-account';
 import ResetPassword from './pages/auth/reset-password';
 import ForgotPassword from './pages/auth/forgot-password';
+import MainDashboard from './pages/dashboard/mainDashboard';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/forgot-password" element={<ForgotPassword />}>
+            <Route
+                path="/"
+                element={
+                    <PublicRoute>
+                        <Login />
+                    </PublicRoute>
+                }
+            />
+            <Route
+                path="/forgot-password"
+                element={
+                    <PublicRoute>
+                        <ForgotPassword />
+                    </PublicRoute>
+                }
+            >
                 <Route path="find-account" element={<FindAccount />} />
                 <Route path="verify-account" element={<VerifyAccount />} />
             </Route>
-            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route
+                path="/reset-password"
+                element={
+                    <PublicRoute>
+                        <ResetPassword />
+                    </PublicRoute>
+                }
+            />
+            <Route
+                path="/dashboard"
+                element={
+                    <PrivateRoute>
+                        <MainDashboard />
+                    </PrivateRoute>
+                }
+            />
         </Routes>
     );
 };

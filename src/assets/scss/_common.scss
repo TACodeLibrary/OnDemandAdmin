@@ -172,49 +172,9 @@ input[type="number"] {
   }
 }
 
-.site-wrapper {
-  min-height: 100vh;
-  @extend .d-flex, .flex-column;
-}
 
-.main-wrapper {
-  padding-top: 6.8rem;
-  flex: 1;
 
-  .rightSidebar {
-    flex: 0 0 auto;
-    max-width: 28rem;
-    width: 100%;
-    padding-top: 2rem;
 
-    @media screen and (max-width:767px) {
-      max-width: 100%;
-    }
-  }
-
-  .content-wrapper {
-    @extend .d-flex;
-    gap: 1.6rem;
-
-    @media screen and (max-width:767px) {
-      flex-direction: column;
-    }
-
-    .main-content {
-      flex: 1;
-      max-width: calc(100% - 49.2rem);
-      transition: all 0.3s ease-in-out;
-
-      &.chat {
-        max-width: 100%;
-      }
-
-      @media screen and (max-width:767px) {
-        max-width: 100%;
-      }
-    }
-  }
-}
 
 .custom-modal {
   max-width: 72rem;

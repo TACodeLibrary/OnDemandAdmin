@@ -7,3 +7,19 @@
         }
     }
 }
+
+.input-has-icon{
+    svg{
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.8rem;
+    }
+    label{
+        left: 2.4rem;
+    }
+    input{
+        padding-left: 3.6rem!important;
+    }
+}

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dashboard, Profile } from '../../utils/images';
+import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 
 const Sidebar = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ const Sidebar = () => {
           >
             <img src={Profile} className='side-icons'/>
             <span>User</span>
-            <span className="arrow">{isUserMenuOpen ? '▼' : '▶'}</span>
+            <span className="arrow">{isUserMenuOpen ? <BsChevronDown/> : <BsChevronRight/>}</span>
           </div>
           
           {/* Submenu items */}

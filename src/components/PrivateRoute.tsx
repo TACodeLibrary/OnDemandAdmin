@@ -8,7 +8,6 @@ interface PrivateRouteProps {
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const location = useLocation();
   const isAuthenticated = localStorage.getItem('token'); // Replace with your auth logic
-    console.log("isAuthenticate: ",isAuthenticated)
   if (!isAuthenticated) {
     // Redirect to login page and save the attempted URL
     return <Navigate to="/" state={{ from: location }} replace />;

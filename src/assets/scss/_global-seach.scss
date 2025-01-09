@@ -1,0 +1,27 @@
+.global-search-form {
+    width: 100%;
+    max-width: 35rem;
+    flex: 1;
+    
+  }
+  .search-container {
+    position: relative;
+    margin-right: 2.6rem;
+
+    .search-button{
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: 0;
+        color: var(--bs-white);
+        font-size: 1.6rem;
+    }
+  }
+  .search-input{
+      background: var(--bs-gray-800);
+      color: var(--bs-white);
+      border-radius: 2.6rem;  
+      padding-left: 3.8rem;
+  }

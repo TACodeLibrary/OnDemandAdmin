@@ -11,6 +11,8 @@ import { Logo } from '../../../utils/images';
 import { FiMail } from "react-icons/fi";
 import { LiaKeySolid } from "react-icons/lia";
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../../../rtk/features/authSlice';
 
 type LoginSchema = z.infer<typeof LoginFormSchema>;
 
@@ -18,11 +20,13 @@ interface LoginResponse {
   data: {
     access_token: string;
     user: any;
+    data:any;
   };
   error?: string;
 }
 
 const Login = () => {
+    const dispatch= useDispatch();
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm<LoginSchema>({
         defaultValues: {
@@ -52,11 +56,16 @@ const Login = () => {
             if (res?.error) {
                 throw res.error
             }
-
+            console.log(res, 'RESPONSE')
             localStorage.setItem('token', res.data.access_token);
             localStorage.setItem('user', JSON.stringify(res.data));
             
+            dispatch(setAuth({
+                access_token: res.data.access_token,
+                user: res.data,
+              }));
             toast.success('Login Success!')
+
             navigate("/dashboard", { replace: true });
 
         } catch (error) {

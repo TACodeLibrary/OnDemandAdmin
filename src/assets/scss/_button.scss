@@ -125,3 +125,12 @@
     display: block;
   }
 }
+
+.btn-dummy,
+.btn-dummy:hover{
+  padding: 0;
+  background: transparent!important;
+  border: 0!important;
+  height: auto;
+  width: auto;
+}

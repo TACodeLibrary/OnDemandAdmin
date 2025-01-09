@@ -12,9 +12,19 @@ export const authAPI = adminAPI.injectEndpoints({
                 }
             }),
         }),
+        logoutUser : builder.mutation<any,any>({
+            query : (body : any ) => {
+                return({
+                    url : `/v1/user-auth/logout`,
+                    method : 'POST',
+                    body
+                })
+            }
+        }),
     }),
 });
 
 export const {
-    useLoginMutation
+    useLoginMutation,
+    useLogoutUserMutation
 } = authAPI;

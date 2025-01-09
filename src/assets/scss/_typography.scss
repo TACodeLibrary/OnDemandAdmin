@@ -7,6 +7,14 @@ body {
   background-color: var(--bs-gray-900);
   color: var(--bs-white);
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  color:var(--bs-white)
+}
 
 p {
   &.sub-title {

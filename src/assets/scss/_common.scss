@@ -85,37 +85,6 @@ input[type="number"] {
 }
 
 
-.multistep-form-wrap {
-  width: 100%;
-  max-width: 62rem;
-  margin: auto;
-
-  .form-head {
-    text-align: center;
-    margin-bottom: 5rem;
-  }
-
-
-
-  .form-progressbar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 4rem;
-
-    .step-1,
-    .step-2 {
-      flex: 1 1 0%;
-      height: 6px;
-      background-color: var(--bs-gray-300);
-      margin-right: 5px;
-      border-radius: 10px;
-
-      &.active {
-        background-color: var(--bs-gray-800);
-      }
-    }
-  }
-}
 
 
 // for image-wrap
@@ -295,24 +264,6 @@ input[type="number"] {
   }
 }
 
-.input-file {
-  input {
-    display: none;
-  }
-}
-
-.rating-box {
-  @extend .d-flex, .align-items-center, .gap-2;
-
-  span {
-    font-size: 2rem;
-    color: var(--bs-dark-yellow);
-  }
-}
-
-.text-gray {
-  color: #9DA4AE;
-}
 
 .list-style-none {
   padding-left: 0;
@@ -347,90 +298,5 @@ input[type="number"] {
       font-weight: 500;
       color: var(--bs-gray-600);
     }
-  }
-}
-
-
-.lang-ar {
-  direction: rtl;
-
-  .main-content {
-    .back-btn {
-      .icon-chevron-left {
-        &::before {
-          content: "\e925";
-        }
-      }
-    }
-
-    .accordion-header {
-      .accordion-button {
-        &::after {
-          margin-right: auto;
-          margin-left: 0;
-        }
-      }
-    }
-  }
-
-
-
-  .pkg-iconbox,
-  .cp-iconbox,
-  .card-title,
-  .availability-btn-wrap {
-
-    .icon-chevron-right {
-      &::before {
-        content: "\e924";
-      }
-    }
-  }
-
-
-
-  .react-calendar {
-
-    .react-calendar__navigation {
-      direction: ltr;
-    }
-  }
-
-  ul,
-  ol {
-    padding-right: 0;
-  }
-}
-
-
-
-.typeahead {
-  .dropdown-menu {
-    box-shadow: 0px 0px 6px -1px #ccc;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-}
-
-.form-control__menu {
-
-  .form-control__option--is-selected,
-  .form-control__option--is-focused {
-    background-color: $cornell-red ;
-    color: var(--bs-white);
-  }
-}
-
-.height-max-scroller {
-  max-height: 28rem;
-}
-
-
-.bg-primary-light {
-  background-color: var(--bs-linen);
-  @extend .border-0;
-
-  .card-body {
-    color: var(--bs-body-color);
   }
 }

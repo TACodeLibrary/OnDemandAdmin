@@ -4,8 +4,12 @@ import GlobalSearchbar from "../../components/GlobalSearchbar";
 import { AddTask, Groups, Message, Notification, ProfileImage, StickyNotes } from "../../utils/images";
 import { BsChevronDown } from "react-icons/bs";
 import ProfileDropdown from "../../components/ProfileDropdown";
+import { RootState } from "../../rtk/store";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+    const auth = useSelector((state: RootState) => state.auth);
+    console.log(auth, 'AUTH')
     return (
         <header className="header">
             <div className="left-header">

@@ -14,10 +14,15 @@ export const authAPI = adminAPI.injectEndpoints({
         }),
         logoutUser : builder.mutation<any,any>({
             query : (body : any ) => {
+                console.log(body, "--body")
                 return({
                     url : `/v1/user-auth/logout`,
                     method : 'POST',
-                    body
+                    body,
+                    headers : {
+                        "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET,
+                        "Authorization": body.token
+                    }
                 })
             }
         }),

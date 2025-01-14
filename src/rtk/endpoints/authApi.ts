@@ -39,6 +39,18 @@ export const authAPI = adminAPI.injectEndpoints({
                 }
             }
         }),
+        verifyOtp : builder.mutation<any,any>({
+            query : (body : any) => {
+                return{
+                    url : `/v1/user-auth/forgot-password`,
+                    method : 'PUT',
+                    body,
+                    headers : {
+                        "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET
+                    }
+                }
+            }
+        }),
     }),
 });
 

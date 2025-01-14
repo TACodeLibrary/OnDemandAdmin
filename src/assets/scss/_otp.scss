@@ -41,3 +41,26 @@
     padding: 4px 12px 4px 12px;
     display: inline-block;
 }
+
+
+.otp-formset {
+    &>div {
+      gap: 1rem;
+      justify-content: center;
+  
+      input.form-control {
+        min-width: 6rem;
+        padding: 1.4rem;
+        border: 0;
+        border-radius: 0;
+        background-color: var(--bs-transparent);
+        border-bottom: 0.2rem solid var(--bs-white);
+        font-size: 2rem;
+        color: var(--bs-white);
+        &:focus{
+            border-bottom: 0.2rem solid var(--bs-white);
+        }
+      }
+    }
+  
+  }

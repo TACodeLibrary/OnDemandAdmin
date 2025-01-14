@@ -7,11 +7,13 @@ import { Logo } from '../../../../utils/images';
 import { Button } from 'react-bootstrap';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { FiMail } from 'react-icons/fi';
-
+import { useForgotPasswordMutation } from '../../../../rtk/endpoints/authApi';
+import { aesEncrypt } from '../../../../utils/aes-encrypt-decrypt';
 type FindAccountForm = z.infer<typeof FindAccountSchema>;
 
 const FindAccount = () => {
     const navigate = useNavigate();
+    const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
     const { register, handleSubmit, formState: { errors } } = useForm<FindAccountForm>({
         defaultValues: {
             email: ''
@@ -19,10 +21,16 @@ const FindAccount = () => {
         resolver: zodResolver(FindAccountSchema)
     });
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-        navigate("/forgot-password/verify-account");
-        // Handle form submission logic here
+    const onSubmit = async (data: FindAccountForm) => {
+        try {
+            await forgotPassword({
+                email: aesEncrypt(data.email)
+            }).unwrap();
+            navigate("/forgot-password/verify-account");
+        } catch (error) {
+            console.error('Failed to submit forgot password request:', error);
+            // You might want to add error handling here (e.g., toast notification)
+        }
     };
 
     return (
@@ -45,27 +53,29 @@ const FindAccount = () => {
                                 label="Email address"
                                 className="mb-3 field-transparent input-has-icon"
                             >
-                                <FiMail/>
+                                <FiMail />
                                 <Form.Control
                                     type="email"
                                     placeholder="name@example.com"
                                     className={`input ${errors.email ? 'input-error' : ''}`}
                                     {...register('email')}
                                 />
-                                
-                                
+
+
                             </FloatingLabel>
                         </div>
 
                         {/* Forgot Password Link */}
-                        
+
 
                         {/* Submit Button */}
-
-                        {/* <Button type="submit" disabled={isLoading} className='btn-full text-black'>
-                            {isLoading ? 'Loading...' : 'Log In'}
-                        </Button> */}
-
+                        <Button
+                            type="submit"
+                            disabled={isLoading}
+                            className='btn-full text-black'
+                        >
+                            {isLoading ? 'Processing...' : 'Find Account'}
+                        </Button>
                     </form>
                 </div>
             </div>

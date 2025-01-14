@@ -19,14 +19,20 @@ export const FindAccountSchema = z.object({
         .min(1, { message: "Email is required" })
         .email({ message: "Invalid email address" }),
 });
+export const VerifyOtpSchema = z.object({
+    otp: z.string({
+        required_error: 'OTP is required'
+    })
+        .min(1, { message: "OTP is required" }),
+});
 
 export const ResetPasswordSchema = z.object({
     newPassword: z
-        .string()
-        .min(8, { message: "Password must be at least 8 characters long" })
-        .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-        .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-        .regex(/[0-9]/, "Password must contain at least one number"),
+        .string(),
+        // .min(8, { message: "Password must be at least 8 characters long" })
+        // .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+        // .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+        // .regex(/[0-9]/, "Password must contain at least one number"),
     confirmPassword: z
         .string(),
 }).superRefine((data, ctx) => {

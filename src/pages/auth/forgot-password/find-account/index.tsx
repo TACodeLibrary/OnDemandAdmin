@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { FindAccountSchema } from '../../../../schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-
+import { Logo } from '../../../../utils/images';
+import { Button } from 'react-bootstrap';
+import { FloatingLabel, Form } from 'react-bootstrap';
+import { FiMail } from 'react-icons/fi';
+import { useForgotPasswordMutation } from '../../../../rtk/endpoints/authApi';
+import { aesEncrypt } from '../../../../utils/aes-encrypt-decrypt';
 type FindAccountForm = z.infer<typeof FindAccountSchema>;
 
 const FindAccount = () => {
     const navigate = useNavigate();
+    const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
     const { register, handleSubmit, formState: { errors } } = useForm<FindAccountForm>({
         defaultValues: {
             email: ''
@@ -15,39 +21,65 @@ const FindAccount = () => {
         resolver: zodResolver(FindAccountSchema)
     });
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-        navigate("/forgot-password/verify-account");
-        // Handle form submission logic here
+    const onSubmit = async (data: FindAccountForm) => {
+        
+        try {
+            localStorage.setItem('forgotPasswordEmail', data.email);
+            await forgotPassword({
+                email: aesEncrypt(data.email)
+            }).unwrap();
+            navigate("/forgot-password/verify-account");
+        } catch (error) {
+            console.error('Failed to submit forgot password request:', error);
+            // You might want to add error handling here (e.g., toast notification)
+        }
     };
 
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen bg-white">
-            
-            
-            <div className="max-w-sm w-full space-y-6">
-                <h2 className="text-3xl font-bold text-center text-gray-900">Find Your Account</h2>
+        <div className="login-wrapper">
+            {/* Left Section */}
+            <div className="left-section">
+                <img src={Logo} alt="Description" className="banner-image" />
+            </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <div className="relative">
-                        <input
-                            type="email"
-                            placeholder="Enter Email Address"
-                            {...register("email", { required: "Email is required" })}
-                            className="block w-full px-4 py-3 bg-gray-50 text-gray-900 text-sm rounded-xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                        />
-                        {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
-                    </div>
+            {/* Right Section */}
+            <div className="right-section text-center">
+                <div className="form-container">
+                    <h2 className='title-large'>Find Your Account</h2>
+                    <p className='mb-4 text-secondary'>Please enter your credentials to retrieve your account</p>
+                    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-group">
+                            {/* Email Field */}
+                            <FloatingLabel
+                                controlId="floatingInput"
+                                label="Email address"
+                                className="mb-3 field-transparent input-has-icon"
+                            >
+                                <FiMail />
+                                <Form.Control
+                                    type="email"
+                                    placeholder="name@example.com"
+                                    className={`input ${errors.email ? 'input-error' : ''}`}
+                                    {...register('email')}
+                                />
 
-                    <div>
-                        <button
+
+                            </FloatingLabel>
+                        </div>
+
+                        {/* Forgot Password Link */}
+
+
+                        {/* Submit Button */}
+                        <Button
                             type="submit"
-                            className="w-full py-3 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            disabled={isLoading}
+                            className='btn-full text-black'
                         >
-                            Next
-                        </button>
-                    </div>
-                </form>
+                            {isLoading ? 'Processing...' : 'Find Account'}
+                        </Button>
+                    </form>
+                </div>
             </div>
         </div>
     );

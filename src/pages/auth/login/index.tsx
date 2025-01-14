@@ -56,7 +56,6 @@ const Login = () => {
             if (res?.error) {
                 throw res.error
             }
-            console.log(res, 'RESPONSE')
             localStorage.setItem('token', res.data.access_token);
             localStorage.setItem('user', JSON.stringify(res.data));
             
@@ -126,7 +125,7 @@ const Login = () => {
 
                         {/* Submit Button */}
 
-                        <Button type="submit" disabled={isLoading} className='btn-full'>
+                        <Button type="submit" disabled={isLoading} className='btn-full text-black'>
                             {isLoading ? 'Loading...' : 'Log In'}
                         </Button>
 

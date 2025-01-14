@@ -14,11 +14,52 @@ export const authAPI = adminAPI.injectEndpoints({
         }),
         logoutUser : builder.mutation<any,any>({
             query : (body : any ) => {
+                // console.log(body, "--body")
                 return({
                     url : `/v1/user-auth/logout`,
                     method : 'POST',
-                    body
+                    body,
+                    headers : {
+                        "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET,
+                        "Authorization": body.token
+                    }
                 })
+            }
+        }),
+        ForgotPassword : builder.mutation<any,any>({
+            query : (body : any) => {
+                return{
+                    url : `/v1/user-auth/forgot-password`,
+                    method : 'PUT',
+                    body,
+                    headers : {
+                        "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET
+                    }
+                }
+            }
+        }),
+        verifyOtp : builder.mutation<any,any>({
+            query : (body : any) => {
+                return{
+                    url : `/v1/user-auth/verify-otp`,
+                    method : 'PUT',
+                    body,
+                    headers : {
+                        "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET
+                    }
+                }
+            }
+        }),
+        resetPassword : builder.mutation<any,any>({
+            query : (body : any) => {
+                return{
+                    url : `/v1/user-auth/reset-password`,
+                    method : 'PATCH',
+                    body,
+                    headers : {
+                        "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET
+                    }
+                }
             }
         }),
     }),
@@ -26,5 +67,8 @@ export const authAPI = adminAPI.injectEndpoints({
 
 export const {
     useLoginMutation,
-    useLogoutUserMutation
+    useLogoutUserMutation,
+    useForgotPasswordMutation,
+    useVerifyOtpMutation,
+    useResetPasswordMutation
 } = authAPI;

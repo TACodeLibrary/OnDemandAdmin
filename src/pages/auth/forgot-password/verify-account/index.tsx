@@ -15,7 +15,7 @@ type VerifyOtpForm = z.infer<typeof VerifyOtpSchema>;
 
 const VerifyAccount = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<VerifyOtpForm>({
+  const { handleSubmit, watch, setValue, formState: {} } = useForm<VerifyOtpForm>({
     defaultValues: { otp: '' },
     resolver: zodResolver(VerifyOtpSchema),
   });

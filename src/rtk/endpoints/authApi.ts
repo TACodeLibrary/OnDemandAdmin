@@ -1,4 +1,3 @@
-import ForgotPassword from "../../pages/auth/forgot-password";
 import adminAPI from "../api";
 
 export const authAPI = adminAPI.injectEndpoints({

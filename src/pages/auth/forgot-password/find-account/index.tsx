@@ -22,7 +22,9 @@ const FindAccount = () => {
     });
 
     const onSubmit = async (data: FindAccountForm) => {
+        
         try {
+            localStorage.setItem('forgotPasswordEmail', data.email);
             await forgotPassword({
                 email: aesEncrypt(data.email)
             }).unwrap();

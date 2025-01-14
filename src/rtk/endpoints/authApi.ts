@@ -42,8 +42,20 @@ export const authAPI = adminAPI.injectEndpoints({
         verifyOtp : builder.mutation<any,any>({
             query : (body : any) => {
                 return{
-                    url : `/v1/user-auth/forgot-password`,
+                    url : `/v1/user-auth/verify-otp`,
                     method : 'PUT',
+                    body,
+                    headers : {
+                        "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET
+                    }
+                }
+            }
+        }),
+        resetPassword : builder.mutation<any,any>({
+            query : (body : any) => {
+                return{
+                    url : `/v1/user-auth/reset-password`,
+                    method : 'PATCH',
                     body,
                     headers : {
                         "client-secret" : import.meta.env.VITE_APP_CLIENT_SECRET
@@ -57,5 +69,7 @@ export const authAPI = adminAPI.injectEndpoints({
 export const {
     useLoginMutation,
     useLogoutUserMutation,
-    useForgotPasswordMutation
+    useForgotPasswordMutation,
+    useVerifyOtpMutation,
+    useResetPasswordMutation
 } = authAPI;

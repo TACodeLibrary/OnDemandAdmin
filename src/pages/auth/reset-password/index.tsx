@@ -1,83 +1,101 @@
-import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { ResetPasswordSchema } from '../../../schema';
 import { z } from 'zod';
 import { useNavigate } from 'react-router';
-
-
+import { Logo } from '../../../utils/images';
+import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import { LiaKeySolid } from 'react-icons/lia';
+import { useResetPasswordMutation } from '../../../rtk/endpoints/authApi';
 type ResetPasswordForm = z.infer<typeof ResetPasswordSchema>;
 
 const ResetPassword = () => {
     const navigate = useNavigate();
+    const [resetPassword, { isLoading }] = useResetPasswordMutation();
     const { register, handleSubmit, formState: { errors } } = useForm<ResetPasswordForm>({
         resolver: zodResolver(ResetPasswordSchema),
     });
-    const [showPassword, setShowPassword] = useState(false);
-
-    const onSubmit = (data: ResetPasswordForm) => {
+    // const [showPassword, setShowPassword] = useState(false);
+    const verificationData = JSON.parse(localStorage.getItem('otpVerificationResponse') || '{}');
+    console.log(verificationData?.data?.user_uuid, 'VVVVVVVV')
+    const onSubmit = async (data: ResetPasswordForm) => {
         console.log("Form Submitted:", data);
-        navigate('/')
-        // Handle form submission logic (e.g., API call)
+        console.log("Validation Errors:", errors);
+        // navigate('/')
+        try {
+            const res= await resetPassword({
+                user_uuid: verificationData?.data?.user_uuid,
+                password: data.confirmPassword, 
+             }).unwrap();
+             console.log(res, 'PASSWORD RESPONSE')
+             navigate("/");
+           } catch (error) {
+             console.error('Failed to reset password:', error);
+           }
     };
 
-
+    const onError = (errors: any) => {
+        console.log('Form Errors:', errors);
+    };
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen bg-white">
-            <div className="max-w-sm w-full space-y-6">
-                <h2 className="text-2xl font-bold text-center text-gray-900">Reset Password</h2>
+        <div className="login-wrapper">
+            {/* Left Section */}
+            <div className="left-section">
+                <img src={Logo} alt="Description" className="banner-image" />
+            </div>
+            <div className="right-section text-center">
+                <div className="form-container">
+                    <h2 className='title-large'>Reset Password</h2>
+                    <p className='mb-4 text-secondary'>Please enter your credentials to retrieve your account</p>
+                    <form onSubmit={handleSubmit(onSubmit, onError)}>
+                        {/* New Password Field */}
+                        <div className="form-group">
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    {/* New Password Field */}
-                    <div className="relative">
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            placeholder="Enter New Password"
-                            {...register('newPassword')}
-                            className="block w-full px-12 py-4 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 placeholder-gray-400"
-                        />
-                        <span
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={showPassword ? "M13 10V6a1 1 0 012 0v4a1 1 0 01-2 0zm6 0V6a1 1 0 112 0v4a1 1 0 01-2 0z" : "M12 15v2a1 1 0 01-2 0v-2a1 1 0 012 0"} />
-                            </svg>
-                        </span>
-                        {errors.newPassword && <p className="text-red-500 text-sm mt-1">{errors.newPassword.message}</p>}
-                    </div>
+                            <FloatingLabel
+                                controlId="floatingPassword"
+                                label="Password"
+                                className="mb-3 field-transparent input-has-icon"
+                            >
+                                <LiaKeySolid />
+                                <Form.Control
+                                    type="password"
+                                    className={`input ${errors.newPassword ? 'input-error' : ''}`}
+                                    {...register('newPassword')}
+                                />
+                            </FloatingLabel>
+                        </div>
 
-                    {/* Confirm Password Field */}
-                    <div className="relative">
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            placeholder="Confirm New Password"
-                            {...register('confirmPassword')}
-                            className="block w-full px-12 py-4 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 placeholder-gray-400"
-                        />
-                        <span
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={showPassword ? "M13 10V6a1 1 0 012 0v4a1 1 0 01-2 0zm6 0V6a1 1 0 112 0v4a1 1 0 01-2 0z" : "M12 15v2a1 1 0 01-2 0v-2a1 1 0 012 0"} />
-                            </svg>
-                        </span>
-                        {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>}
-                    </div>
+                        {/* Confirm Password Field */}
+                        <div className="form-group">
+                            <FloatingLabel
+                                controlId="floatingPassword"
+                                label="Confirm Password"
+                                className="mb-3 field-transparent input-has-icon"
+                            >
+                                <LiaKeySolid />
+                                <Form.Control
+                                    type="password"
+                                    className={`input ${errors.confirmPassword ? 'input-error' : ''}`}
+                                    {...register('confirmPassword')}
+                                />
+                            </FloatingLabel>
+                        </div>
 
-                    {/* Submit Button */}
-                    <div>
-                        <button
-                            type="submit"
-                            className="w-full py-4 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Update
-                        </button>
-                    </div>
-                </form>
+                        {/* Submit Button */}
+                        <div>
+                            <Button
+                                type="submit"
+                                disabled={isLoading}
+                                className='btn-full text-black'
+                            >
+                                {isLoading ? 'Processing...':'Update'}
+                            </Button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+
     );
 };
 

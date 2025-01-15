@@ -7,6 +7,7 @@ import ForgotPassword from './pages/auth/forgot-password';
 import MainDashboard from './pages/dashboard/mainDashboard';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import LandingDashboard from './pages/dashboard/landingDashboard';
 
 
 const AppRouter = () => {
@@ -52,6 +53,14 @@ const AppRouter = () => {
                 element={
                     <PrivateRoute>
                         <MainDashboard />
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/landing"
+                element={
+                    <PrivateRoute>
+                        <LandingDashboard />
                     </PrivateRoute>
                 }
             />

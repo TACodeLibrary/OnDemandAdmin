@@ -1,4 +1,3 @@
-// import './Sidebar.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bookmark, Dashboard, Dollor, Info, Notification, Offers, Profile, Settings, SidebarWrap,
@@ -8,6 +7,7 @@ import { Button } from 'react-bootstrap';
 
 const Sidebar = () => {
   const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   const menu = [
     {
@@ -91,17 +91,21 @@ const Sidebar = () => {
     }));
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(prev => !prev);
+  };
+
   return (
-    <aside className="leftSidebar">
+    <aside className={`leftSidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
       <div className='leftside-topbar'>
         <div className='logo-wrap'>
           <div className='d-flex align-items-center mb-2'>
-          <img src={SmallLogo} />
-          <span>OnAir</span>
+            <img src={SmallLogo} />
+            {!isSidebarCollapsed && <span>OnAir</span>}
           </div>
-          <p className='mb-0'>Admin Panel</p>
+          {!isSidebarCollapsed && <p className='mb-0'>Admin Panel</p>}
         </div>
-        <Button className='sidebar-wrap-icon btn-dummy'>
+        <Button className='sidebar-wrap-icon btn-dummy' onClick={toggleSidebar}>
           <img src={SidebarWrap} />
         </Button>
       </div>

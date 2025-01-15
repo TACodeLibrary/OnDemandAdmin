@@ -1,48 +1,20 @@
 .site-wrapper {
-    min-height: 100vh;
-    @extend .d-flex;
-    background-image: url('./images/bg-image.png');
-    background-size: cover;
-    background-position: bottom;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    .main-wrapper{
-      flex: 1;
-      padding: 0 1.6rem;
-    }
-  }
+  min-height: 100vh;
+  @extend .d-flex;
+  background-image: url('./images/bg-image.png');
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 
-  
-    // .rightSidebar {
-    //   flex: 0 0 auto;
-    //   max-width: 28rem;
-    //   width: 100%;
-    //   padding-top: 2rem;
-  
-    //   @media screen and (max-width:767px) {
-    //     max-width: 100%;
-    //   }
-    // }
-  
-    // .content-wrapper {
-    //   @extend .d-flex;
-    //   gap: 1.6rem;
-  
-    //   @media screen and (max-width:767px) {
-    //     flex-direction: column;
-    //   }
-  
-    //   .main-content {
-    //     flex: 1;
-    //     max-width: calc(100% - 49.2rem);
-    //     transition: all 0.3s ease-in-out;
-  
-    //     &.chat {
-    //       max-width: 100%;
-    //     }
-  
-    //     @media screen and (max-width:767px) {
-    //       max-width: 100%;
-    //     }
-    //   }
-    // }
+  .main-wrapper {
+    flex: 1;
+    padding: 0 1.6rem;
+  }
+}
+
+.main-content {
+width: 100%;
+height: calc(100vh - 10rem);
+overflow-y: auto;
+}

@@ -26,3 +26,5 @@ export const Message = '/icons/chat.svg';
 // ----------
 
 export const ProfileImage ='/images/profile.jpg';
+export const sunImg ='/images/sun-img.svg'
+export const moonImg='/images/half-moon.png'

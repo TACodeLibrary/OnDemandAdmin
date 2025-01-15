@@ -9,7 +9,7 @@ interface PublicRouteProps {
 const PublicRoute = ({ children, restricted = false }: PublicRouteProps) => {
   const location = useLocation();
   const isAuthenticated = localStorage.getItem('token'); // Replace with your auth logic
-  const from = location.state?.from?.pathname || '/dashboard';
+  const from = location.state?.from?.pathname || '/landing';
 
   if (isAuthenticated && restricted) {
     // Redirect to the page they came from or dashboard

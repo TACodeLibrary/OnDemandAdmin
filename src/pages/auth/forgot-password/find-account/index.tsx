@@ -22,7 +22,6 @@ const FindAccount = () => {
     });
 
     const onSubmit = async (data: FindAccountForm) => {
-        
         try {
             localStorage.setItem('forgotPasswordEmail', data.email);
             await forgotPassword({
@@ -55,7 +54,7 @@ const FindAccount = () => {
                                 label="Email address"
                                 className="mb-3 field-transparent input-has-icon"
                             >
-                                <FiMail />
+                                <FiMail className='icon-start'/>
                                 <Form.Control
                                     type="email"
                                     placeholder="name@example.com"

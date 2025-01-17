@@ -54,7 +54,7 @@ const LandingDashboard = () => {
                         <div className="morning-text">
                             <div className="text-wrap-center">
                                 <div className="big-text">
-                                    <h1 className="mb-0">{greeting}
+                                    <h1 className="mb-0">{greeting}&nbsp;
                                         <span className="text-capitalize">{aesDecrypt(auth?.data?.user?.first_name)}</span>
                                     </h1>
                                     <img src={timeImage} />

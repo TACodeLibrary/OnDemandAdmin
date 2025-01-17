@@ -29,6 +29,9 @@
   @extend .rounded-circle, .overflow-hidden;
   width: 4rem;
   flex-shrink: 0;
+  img{
+    object-fit: cover;
+  }
 }
 
 .profile-view {

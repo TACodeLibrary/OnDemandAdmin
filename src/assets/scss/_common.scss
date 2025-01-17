@@ -244,17 +244,45 @@ input[type="number"] {
 .tabs-secondary {
   gap: 1.2rem;
   border: none;
+  margin-bottom: 2rem;
 
   .nav-item {
     .nav-link {
       font-size: 1.4rem;
-      color: var(--bs-gray-900);
-      font-weight: 500;
+      font-weight: 400;
+      color: var(--bs-white);
+      background-color: var(--bs-gray-700);
       border: none;
-      border-radius: 1.2rem;
+      border-radius: 5rem;
+      padding: 1.4rem 2.4rem;
 
       &.active {
         background-color: var(--bs-primary);
+        color: var(--bs-white);
+      }
+    }
+  }
+}
+.tabs-primary {
+  gap: 2.2rem;
+  border: none;
+  margin-bottom: 2.4rem;
+
+  .nav-item {
+    flex: 1;
+    .nav-link {
+      border: 0;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--bs-white);
+      background-color: transparent;
+      border-bottom: 3px solid var(--bs-gray-800);
+      border-radius: 0;
+      padding: 1.4rem 2.4rem;
+      width: 100%;
+
+      &.active{
+        border-bottom: 3px solid var(--bs-white);
         color: var(--bs-white);
       }
     }

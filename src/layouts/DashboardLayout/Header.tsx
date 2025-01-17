@@ -6,10 +6,10 @@ import { BsChevronDown } from "react-icons/bs";
 import ProfileDropdown from "../../components/ProfileDropdown";
 import { RootState } from "../../rtk/store";
 import { useSelector } from "react-redux";
+import { aesDecrypt } from "../../utils/aes-encrypt-decrypt";
 
 const Header = () => {
     const auth = useSelector((state: RootState) => state.auth);
-    console.log(auth, 'AUTH')
     return (
         <header className="header">
             <div className="left-header">
@@ -45,18 +45,18 @@ const Header = () => {
                         <img className="" src={ProfileImage} />
                     </Ratio>
                     <div className="profile-description">
-                        <h4>Olivia Rhye</h4>
-                        <p>User Support</p>
+                        <h4>{aesDecrypt(auth?.data?.user?.first_name)}</h4>
+                        {/* <p>User Support</p> */}
                     </div>
                     <BsChevronDown className="ms-auto" />
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="dropdown-card">
                     <ProfileDropdown
-                        name="Olivia Rhye"
-                        email="rhyeol@onairsa.com"
-                        role="User Support"
-                        isAvailable={true}
+                        name={aesDecrypt(auth?.data?.user?.first_name)}
+                        email={aesDecrypt(auth?.data?.user?.email)}
+                        role={auth?.data?.user?.role_name}
+                        isAvailable={auth?.data?.user?.status === "ACTIVE" ? true : false}
                         version="v3.586.1"
                         companyName="OnAir L.L.C"
                         vatNumber="327842973972979237473B"

@@ -22,7 +22,7 @@ const Sidebar = () => {
       url: '#',
       hasChild: true,
       children: [
-        { label: 'Customers', url: '#' },
+        { label: 'Customers', url: '/customers-list' },
         { label: 'Service Providers', url: '#' },
         { label: 'Vendors', url: '#' },
         { label: 'Referrals', url: '#' },

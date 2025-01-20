@@ -1,0 +1,50 @@
+// #4D5761
+
+.theme-table-view {
+    border-radius: 1rem;
+    overflow: hidden;
+
+    thead {
+        tr>* {
+            background-color: #6C737F;
+            color: var(--bs-white);
+            padding: 1.5rem 0.6rem;
+            border: 0;
+            font-size: 1.3rem;
+            font-weight: 400;
+            vertical-align: middle;
+        }
+    }
+
+    tbody {
+        tr>* {
+            background-color: #4D5761;
+            padding: 1.5rem 0.6rem;
+            color: var(--bs-white);
+            border: 0;
+            font-size: 1.3rem;
+            font-weight: 300;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(odd)>* {
+            background-color: #384250 !important;
+        }
+    }
+    .button-group{
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        button{
+            color:var(--bs-white);
+            text-align:center;
+            font-size: 1.8rem;
+            &danger{
+                svg{
+                    color: var(--bs-danger);
+                }
+            }
+
+        }
+    }
+}

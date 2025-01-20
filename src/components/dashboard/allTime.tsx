@@ -1,43 +1,24 @@
 import { Card, Row, Col } from "react-bootstrap";
+import ValueCards from "../cards/ValueCards";
 
 const AllTime = () => {
+    const stats = [
+        { title: "Users", value: "2m" },
+        { title: "Revenue", value: "5.8m SAR" },
+        { title: "Earning", value: "20k" },
+        { title: "Bookings", value: "20k" },
+    ];
+
     return (
         <Card className="dark">
             <Card.Body>
                 <h3 className="title-h2 mb-3">All Time</h3>
                 <Row>
-                    <Col>
-                        <Card className="darker simple-card">
-                            <Card.Body>
-                                <p>Users</p>
-                                <h3>2m</h3>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className="darker simple-card">
-                            <Card.Body>
-                                <p>Revenue</p>
-                                <h3>5.8m SAR</h3>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className="darker simple-card">
-                            <Card.Body>
-                                <p>Earning</p>
-                                <h3>20k</h3>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className="darker simple-card">
-                            <Card.Body>
-                                <p>Bookings</p>
-                                <h3>20k</h3>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                    {stats.map((stat, index) => (
+                        <Col key={index}>
+                            <ValueCards {...stat} />
+                        </Col>
+                    ))}
                 </Row>
             </Card.Body>
         </Card>

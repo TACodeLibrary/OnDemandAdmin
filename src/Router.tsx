@@ -8,6 +8,7 @@ import MainDashboard from './pages/dashboard/mainDashboard';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import LandingDashboard from './pages/dashboard/landingDashboard';
+import CustomersList from './pages/users/customers';
 
 
 const AppRouter = () => {
@@ -48,6 +49,9 @@ const AppRouter = () => {
                     </PublicRoute>
                 }
             />
+
+            {/* ---------- Private Dashboard -------------- */}
+
             <Route
                 path="/dashboard"
                 element={
@@ -61,6 +65,14 @@ const AppRouter = () => {
                 element={
                     <PrivateRoute>
                         <LandingDashboard />
+                    </PrivateRoute>
+                }
+            />
+             <Route
+                path="/customers-list"
+                element={
+                    <PrivateRoute>
+                        <CustomersList />
                     </PrivateRoute>
                 }
             />

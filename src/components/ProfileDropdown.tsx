@@ -5,6 +5,8 @@ import { Ratio } from 'react-bootstrap';
 import { useLogoutUserMutation } from '../rtk/endpoints/authApi';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import NameAvatar from './NameAvatar';
 
 interface ProfileDropdownProps {
     name: string;
@@ -32,7 +34,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
     const handleLogout = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await logoutUser({token: token});
+            const res = await logoutUser({ token: token });
             localStorage.removeItem('token');
             console.log(res, 'RESONSE')
             toast.success(res.data.data)
@@ -44,8 +46,8 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
 
     return (
         <div className="profile-dropdown">
-            <button onClick={handleLogout}>Logout</button>
             <div className='bg-shine'></div>
+
             <Ratio aspectRatio="1x1" className='image-box'>
                 <img className="" src={ProfileImage} />
             </Ratio>
@@ -75,14 +77,16 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
                         <BsBell />
                     </button>
                     <button className="action-button">
-                        <BsUnlock />
+                        <Link to="">
+                            <BsUnlock />
+                        </Link>
                     </button>
-                    <button className="action-button">
+                    <button className="action-button" onClick={handleLogout}>
                         <BsBoxArrowRight />
                     </button>
-                    <button className="action-button">
+                    {/* <button className="action-button">
                         <BsPersonX />
-                    </button>
+                    </button> */}
                 </div>
 
                 <div className="profile-footer">

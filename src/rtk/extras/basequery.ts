@@ -14,7 +14,7 @@ const handleRefreshToken = async (
   extraOptions: any
 ): Promise<any> => {
   const refreshResult = await baseQuery(
-    '/refreshToken',
+    '/v1/user-auth/refresh-token',
     api,
     extraOptions
   )

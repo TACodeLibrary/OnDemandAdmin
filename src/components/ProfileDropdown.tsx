@@ -1,12 +1,11 @@
 import React from 'react';
-import { BsBell, BsBoxArrowRight, BsPencilSquare, BsPersonX, BsUnlock } from 'react-icons/bs';
+import { BsBell, BsBoxArrowRight, BsPencilSquare, BsUnlock } from 'react-icons/bs';
 import { ProfileImage } from '../utils/images';
 import { Ratio } from 'react-bootstrap';
 import { useLogoutUserMutation } from '../rtk/endpoints/authApi';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import NameAvatar from './NameAvatar';
 
 interface ProfileDropdownProps {
     name: string;
@@ -36,7 +35,6 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
             const token = localStorage.getItem('token');
             const res = await logoutUser({ token: token });
             localStorage.removeItem('token');
-            console.log(res, 'RESONSE')
             toast.success(res.data.data)
             navigate('/login')
         } catch (error) {

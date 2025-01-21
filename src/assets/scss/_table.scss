@@ -39,7 +39,7 @@
             color:var(--bs-white);
             text-align:center;
             font-size: 1.8rem;
-            &danger{
+            &.danger{
                 svg{
                     color: var(--bs-danger);
                 }

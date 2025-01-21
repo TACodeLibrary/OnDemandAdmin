@@ -11,7 +11,7 @@
   }
 
   &.dark {
-    background-color: rgba($gray-800, 0.5);
+    background-color: rgba($gray-800, 0.8);
     @extend .border-0;
     .card-body {
       color: var(--bs-body-color);

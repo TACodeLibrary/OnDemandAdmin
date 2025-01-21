@@ -11,7 +11,7 @@
   }
 
   &.dark {
-    background-color: $gray-800;
+    background-color: rgba($gray-800, 0.8);
     @extend .border-0;
     .card-body {
       color: var(--bs-body-color);
@@ -73,6 +73,49 @@
       &:not(:last-child){
         border-right: 1px solid;
       }
+    }
+  }
+}
+
+
+// Customer Header //
+
+.page-header{
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  .page-geader-title{
+    p{
+      margin-bottom: 0;
+    }
+  }
+  .page-header-rightbar{
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    .icons-list{
+      @extend .d-flex, .align-items-center, .gap-3;
+      button{
+        @extend .d-inline-flex, .align-items-center, .justify-content-center;
+        border-radius: 50%;
+        height: 4.2rem;
+        width: 4.2rem;
+        text-align: center;
+        background-color: var(--bs-gray-900);
+        color: var(--bs-white);
+        svg{
+          font-size: 2rem;
+        }
+      }
+    }
+    .search-form{
+      .search-container{
+        margin-right: 0;
+        input{
+          background-color: var(--bs-gray-900);
+        }
+      }
+      
     }
   }
 }

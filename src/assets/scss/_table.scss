@@ -31,20 +31,34 @@
             background-color: #384250 !important;
         }
     }
-    .button-group{
+
+    .button-group {
         display: flex;
         align-items: center;
         gap: 0.2rem;
-        button{
-            color:var(--bs-white);
-            text-align:center;
+
+        button {
+            color: var(--bs-white);
+            text-align: center;
             font-size: 1.8rem;
-            &.danger{
-                svg{
+
+            &.danger {
+                svg {
                     color: var(--bs-danger);
                 }
             }
 
         }
+    }
+}
+
+.total-user {
+    background-color: #384250;
+    padding: 0.8rem 1.4rem;
+    border: 1px solid #6C737F;
+    border-radius: 1rem;
+
+    p {
+        margin-bottom: 0;
     }
 }

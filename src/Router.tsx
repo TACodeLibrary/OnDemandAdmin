@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import LandingDashboard from './pages/dashboard/landingDashboard';
 import CustomersList from './pages/users/customers';
+import CustomerDetails from './pages/users/customers/customerDetails';
 
 
 const AppRouter = () => {
@@ -68,11 +69,19 @@ const AppRouter = () => {
                     </PrivateRoute>
                 }
             />
-             <Route
+            <Route
                 path="/customers-list"
                 element={
                     <PrivateRoute>
                         <CustomersList />
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/customers-details"
+                element={
+                    <PrivateRoute>
+                        <CustomerDetails />
                     </PrivateRoute>
                 }
             />

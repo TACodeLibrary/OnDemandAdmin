@@ -44,8 +44,8 @@ $dark-orange: #F79009;
 $light-orange: #FFFAEB;
 $sky-blue: #E9F6FF;
 $pink-light: #FEE4E2;
-$link-text:#6BB1FF;
-$cream:#FCF3E6;
+$link-text: #6BB1FF;
+$cream: #FCF3E6;
 
 $danger-light: $light-red;
 
@@ -219,26 +219,26 @@ $accordion-border-width: 0;
 $accordion-button-active-bg: transparent;
 $accordion-button-focus-box-shadow: transparent;
 
-$datepicker__selected-color: $primary;
-$datepicker__border-radius: 0.4rem;
-$datepicker__day-margin: 0.3rem;
-$datepicker__font-size: 1.3rem;
-$datepicker__font-family: $font-family-sans-serif;
-$datepicker__item-size: 2.7rem;
-$datepicker__margin: 0.6rem;
-$datepicker__navigation-button-size: 32px;
-$datepicker__triangle-size: 8px;
+// $datepicker__selected-color: $primary !important;
+// $datepicker__border-radius: 0.4rem !important;
+// $datepicker__day-margin: 0.3rem !important;
+// $datepicker__font-size: 1.6rem !important;
+// $datepicker__font-family: $font-family-sans-serif !important;
+// $datepicker__item-size: 2.7rem !important;
+// $datepicker__margin: 0.6rem !important;
+// $datepicker__navigation-button-size: 32px !important;
+// $datepicker__triangle-size: 8px !important;
 
 // Floating input
-$form-floating-height:                  5rem;
-$form-floating-line-height:             1.25 !default;
-$form-floating-padding-x:               1.2rem !default;
-$form-floating-padding-y:               1.4rem !default;
-$form-floating-input-padding-t:         1.625rem !default;
-$form-floating-input-padding-b:         1.625rem !default;
-$form-floating-label-height:            2em !default;
-$form-floating-label-opacity:           .65 !default;
-$form-floating-label-transform:         scale(.85) translateY(-2.5rem) translateX(.15rem) !default;
+$form-floating-height: 5rem;
+$form-floating-line-height: 1.25 !default;
+$form-floating-padding-x: 1.2rem !default;
+$form-floating-padding-y: 1.4rem !default;
+$form-floating-input-padding-t: 1.625rem !default;
+$form-floating-input-padding-b: 1.625rem !default;
+$form-floating-label-height: 2em !default;
+$form-floating-label-opacity: .65 !default;
+$form-floating-label-transform: scale(.85) translateY(-2.5rem) translateX(.15rem) !default;
 // $form-floating-transition:              opacity .1s ease-in-out, transform .1s ease-in-out !default;
 
 

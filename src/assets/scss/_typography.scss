@@ -9,13 +9,14 @@ body {
   letter-spacing: 0.5px;
   overflow: hidden;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6{
-  color:var(--bs-white)
+h6 {
+  color: var(--bs-white)
 }
 
 p {
@@ -101,9 +102,12 @@ p {
   font-size: 1.6rem;
   color: var(--bs-gray-900);
 }
-.link-text{
-color:$link-text!important;
+
+.link-text {
+  color: $link-text !important;
 }
-.panel-heading{
-  
+
+.small-text {
+  font-size: 1.2rem !important;
+  font-weight: 200;
 }

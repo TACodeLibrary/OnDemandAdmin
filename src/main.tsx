@@ -8,6 +8,9 @@ import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'sonner';
 import './assets/global.scss';
 import './i18n/i18n.ts'
+import '../node_modules/react-phone-input-2/lib/bootstrap.css'
+
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -13,24 +13,38 @@
   &.dark {
     background-color: rgba($gray-800, 0.8);
     @extend .border-0;
+
     .card-body {
       color: var(--bs-body-color);
     }
   }
+
   &.darker {
     background-color: $gray-900;
     @extend .border-0;
+
     .card-body {
       color: var(--bs-body-color);
+
+      .field-transparent {
+        label {
+          &::after {
+            background-color: var(--bs-gray-900) !important;
+          }
+        }
+      }
     }
   }
-  &.simple-card{
+
+  &.simple-card {
     min-height: 11rem;
-    p{
+
+    p {
       font-weight: 200;
       margin-bottom: 0.5rem;
     }
-    h3{
+
+    h3 {
       font-weight: 400;
       margin-bottom: 0;
     }
@@ -56,21 +70,26 @@
     font-size: 4.6rem;
     font-weight: 200;
     margin-bottom: 1.4rem;
-    span{
-        font-weight: 400;
+
+    span {
+      font-weight: 400;
     }
+
     img {
       width: 5rem;
     }
 
   }
-  .info-bar{
+
+  .info-bar {
     display: flex;
     align-items: center;
     gap: 1.6rem;
-    p{
+
+    p {
       padding: 0 1.8rem;
-      &:not(:last-child){
+
+      &:not(:last-child) {
         border-right: 1px solid;
       }
     }
@@ -80,42 +99,54 @@
 
 // Customer Header //
 
-.page-header{
+.page-header {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  .page-geader-title{
-    p{
+
+  .page-header-title {
+    p {
       margin-bottom: 0;
     }
+
+    &.has-icon {
+      @extend .d-flex, .align-items-center, .gap-1;
+
+      button {
+        background-color: transparent;
+        border: 0;
+        color: var(--bs-white);
+        font-size: 2.6rem;
+        line-height: 1;
+      }
+    }
   }
-  .page-header-rightbar{
+
+  .page-header-rightbar {
     display: flex;
     align-items: center;
     gap: 1.4rem;
-    .icons-list{
-      @extend .d-flex, .align-items-center, .gap-3;
-      button{
-        @extend .d-inline-flex, .align-items-center, .justify-content-center;
-        border-radius: 50%;
-        height: 4.2rem;
-        width: 4.2rem;
-        text-align: center;
-        background-color: var(--bs-gray-900);
-        color: var(--bs-white);
-        svg{
-          font-size: 2rem;
-        }
-      }
-    }
-    .search-form{
-      .search-container{
+
+    .search-form {
+      .search-container {
         margin-right: 0;
-        input{
+
+        input {
           background-color: var(--bs-gray-900);
         }
       }
-      
+    }
+  }
+}
+
+.header-avatar {
+  .name-rating {
+    .rating-icon {
+      svg {
+        color: $dark-yellow;
+        font-size: 1.8rem;
+        margin-top: -0.4rem;
+      }
     }
   }
 }

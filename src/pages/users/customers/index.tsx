@@ -14,7 +14,7 @@ import CustomersListsCards from '../../../components/users/customers/CustomersLi
 const CustomersList: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [totalCount, setTotalCount] = useState(0);
-  const [pageLimit] = useState(10);
+  const [pageSize] = useState(10);
   const [page, setPage] = useState(1);  // Track current page
 
   const { data: customerListData, isLoading: customerListLoading, isError } = useCustomerListQuery({
@@ -22,7 +22,7 @@ const CustomersList: React.FC = () => {
     list_type: 'ALL',
     search_keyword: '',
     page,  // Pass page number to the API
-    limit: pageLimit,  // Pass limit to the API
+    page_size: pageSize,  // Pass limit to the API
   });
 
   console.log(customerListData, 'CUSTOMER DATA', page, 'PAGE');
@@ -63,7 +63,7 @@ const CustomersList: React.FC = () => {
         <Card className="dark">
           <Card.Body>
             <div className="page-header mb-4">
-              <div className="page-geader-title">
+              <div className="page-header-title">
                 <h1 className="title-h1 mb-1">Users</h1>
                 <p>Customers</p>
               </div>
@@ -157,7 +157,7 @@ const CustomersList: React.FC = () => {
                     <div className='total-user'>
                       <p>{totalCount} Users</p>
                     </div>}
-                  <CommonPagination total={totalCount} pageLimit={pageLimit} currentPage={page} hitAction={handlePageClick} />
+                  <CommonPagination total={totalCount} page_size={pageSize} currentPage={page} hitAction={handlePageClick} />
                 </div>
               </div>
             </div>

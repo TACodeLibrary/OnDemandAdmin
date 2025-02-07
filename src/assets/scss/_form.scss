@@ -1,15 +1,16 @@
-.field-transparent{
-    label{
-        color: var(--bs-gray-500)!important;
-        &::after{
+.field-transparent {
+    label {
+        color: var(--bs-gray-500) !important;
+
+        &::after {
             color: var(--bs-white);
-            background-color: var(--bs-gray-800)!important;
+            background-color: var(--bs-gray-800) !important;
         }
     }
 }
 
-.input-has-icon{
-    svg.icon-start{
+.input-has-icon {
+    svg.icon-start {
         position: absolute;
         top: 50%;
         left: 1rem;
@@ -18,14 +19,16 @@
         color: var(--bs-gray-500)
     }
 
-    
-    label{
+
+    label {
         left: 2.4rem;
     }
-    input{
-        padding-left: 3.6rem!important;
+
+    input {
+        padding-left: 3.6rem !important;
     }
-    .icon-end{
+
+    .icon-end {
         position: absolute;
         top: 50%;
         right: 1rem;
@@ -34,11 +37,98 @@
 
     }
 }
-// input:-webkit-autofill,
-// textarea:-webkit-autofill,
-// select:-webkit-autofill {
-//   background-color: red!important; /* Light green background */
-//   border: 1px solid #0c0;   /* Green border */
-//   color: #000;             /* Text color */
-//   transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
-// }
+
+
+.phone-input-field {
+    width: 100%;
+
+    .react-tel-input {
+        .form-control {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--bs-gray-800);
+            padding: 1.4rem 1.2rem 1.2rem 4.8rem;
+            border: 1px solid var(--bs-gray-700);
+            color: var(--bs-white);
+
+            &:active,
+            &:focus {
+                background: transparent;
+            }
+        }
+    }
+}
+
+.react-select-field {
+    .form-control {
+        height: 5rem;
+        padding: 0rem;
+        border: 0;
+    }
+}
+
+.custom-select__control {
+    background: transparent !important;
+    border: 1px solid var(--bs-gray-700) !important;
+    color: var(--bs-white);
+    box-shadow: unset !important;
+    padding: 5px;
+    border-radius: 6px !important;
+}
+
+.custom-select__control:hover {
+    border-color: #4A90E2;
+}
+
+.custom-select__menu {
+    border-radius: 8px;
+    background: var(--bs-gray-800) !important;
+    padding: 0.4rem;
+}
+
+.custom-select__option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-select__option--is-selected {
+    background-color: var(--bs-gray-800);
+    color: white;
+}
+
+.custom-select__option--is-focused {
+    background-color: var(--bs-gray-900) !important;
+}
+
+.small-linear-card {
+    background-color: var(--bs-gray-900);
+    border: 1px solid var(--bs-gray-700);
+    border-radius: 0.6rem;
+    padding: 1.4rem;
+
+    label {
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: var(--bs-gray-500);
+
+        &.primary {
+            margin-top: -2.3rem;
+            position: absolute;
+            padding: 0 0.5rem;
+            background-color: var(--bs-gray-900);
+        }
+    }
+
+    p {
+        span {
+            font-weight: 300;
+        }
+
+    }
+
+    .home-address {
+        color: var(--bs-white);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+}

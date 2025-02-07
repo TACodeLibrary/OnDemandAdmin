@@ -1,0 +1,55 @@
+.react-datepicker {
+  font-family: $font-family-sans-serif;
+
+  &__selected {
+    color: var(--bs-white);
+  }
+
+  &__border-radius {
+    border-radius: 0.4rem;
+  }
+
+  &__day {
+    margin: 0.3rem;
+  }
+
+  &__font-size {
+    font-size: 1.6rem;
+  }
+
+  &__day {
+    width: 2.7rem;
+    height: 2.7rem;
+    font-size: 1.3rem;
+    line-height: 2.3;
+  }
+
+  &__month {
+    margin: 0.6rem;
+  }
+
+  &__navigation {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__triangle {
+    width: 8px;
+    height: 8px;
+  }
+
+  &__day-name {
+    font-size: 1.3rem;
+    width: 3rem;
+  }
+
+  &__current-month {
+    font-weight: 400;
+    font-size: 1.3rem;
+    padding: 1rem 0 !important;
+  }
+
+  &__navigation {
+    top: 1.2rem;
+  }
+}

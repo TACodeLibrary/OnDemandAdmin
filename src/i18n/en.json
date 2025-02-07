@@ -1,0 +1,9 @@
+{
+  "welcome": "Welcome Back",
+  "loginInstructions": "Please enter your credentials to log into your account",
+  "email": "Email address",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "login": "Log In",
+  "loading": "Loading..."
+}

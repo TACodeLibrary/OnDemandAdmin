@@ -13,6 +13,7 @@ import { LiaKeySolid } from "react-icons/lia";
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAuth } from '../../../rtk/features/authSlice';
+import { useTranslation } from 'react-i18next';
 
 type LoginSchema = z.infer<typeof LoginFormSchema>;
 
@@ -26,6 +27,10 @@ interface LoginResponse {
 }
 
 const Login = () => {
+    const { t, i18n } = useTranslation();
+    const toggleLanguage = () => {
+        i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
+    };
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false); // Add this state
@@ -80,6 +85,9 @@ const Login = () => {
             <div className="left-section">
                 <img src={Logo} alt="Description" className="banner-image" />
             </div>
+            <button onClick={toggleLanguage} className="language-toggle">
+                {i18n.language === 'en' ? 'عربي' : 'English'}
+            </button>
 
             {/* Right Section */}
             <div className="right-section text-center">
@@ -91,30 +99,28 @@ const Login = () => {
                             {/* Email Field */}
                             <FloatingLabel
                                 controlId="floatingInput"
-                                label="Email address"
+                                label={t('email')}
                                 className="mb-3 field-transparent input-has-icon"
                             >
-                                <FiMail className='icon-start'/>
+                                <FiMail className='icon-start' />
                                 <Form.Control
                                     type="email"
-                                    placeholder="name@example.com"
+                                    placeholder={t('email')}
                                     className={`input ${errors.email ? 'input-error' : ''}`}
                                     {...register('email')}
                                 />
-
-
                             </FloatingLabel>
 
                             <FloatingLabel
                                 controlId="floatingInput"
-                                label="Password"
+                                label={t('password')}
                                 className="mb-3 field-transparent input-has-icon"
                             >
-                                <Form.Control 
-                                type={showPassword ? "text" : "password"} 
-                                placeholder="Password"
-                                className={`input pe-5 ${errors.password ? 'input-error' : ''}`}
-                                {...register('password')}
+                                <Form.Control
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder={t('password')}
+                                    className={`input pe-5 ${errors.password ? 'input-error' : ''}`}
+                                    {...register('password')}
                                 />
                                 <LiaKeySolid className="icon-start" />
                                 <div
@@ -129,13 +135,13 @@ const Login = () => {
 
                         {/* Forgot Password Link */}
                         <div className="forgot-password text-end mb-3">
-                            <Link to="/forgot-password/find-account" className="link-text">Forgot Password?</Link>
+                            <Link to="/forgot-password/find-account" className="link-text">{t('forgotPassword')}</Link>
                         </div>
 
                         {/* Submit Button */}
 
                         <Button type="submit" disabled={isLoading} className='btn-full text-black'>
-                            {isLoading ? 'Loading...' : 'Log In'}
+                            {isLoading ? t('loading') : t('login')}
                         </Button>
 
                     </form>

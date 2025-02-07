@@ -34,7 +34,9 @@
 @import "bootstrap/scss/helpers";
 @import "bootstrap/scss/utilities/api";
 
+
 @import "scss/custom-mixins";
+@import "react-datepicker/dist/react-datepicker.css";
 @import "scss/typography";
 @import "scss/button";
 @import "scss/loader";
@@ -50,6 +52,7 @@
 @import "scss/left-sidebar";
 @import "scss/drawer";
 @import "scss/calendar";
+@import "scss/datepicker";
 @import "scss/dashboard";
 @import "scss/chat";
 @import"scss/global-seach";

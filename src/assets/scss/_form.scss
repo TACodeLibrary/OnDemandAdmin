@@ -38,6 +38,7 @@
     }
 }
 
+// phone related fields
 
 .phone-input-field {
     width: 100%;
@@ -59,6 +60,13 @@
     }
 }
 
+.flag-dropdown {
+    .country-list {
+        z-index: 9
+    }
+}
+
+// -------------
 .react-select-field {
     .form-control {
         height: 5rem;
